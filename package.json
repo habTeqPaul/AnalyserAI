@@ -1,0 +1,24 @@
+{
+  "name": "seo-website-analyzer",
+  "version": "1.0.0",
+  "description": "Professional SEO & Google Analytics Website Analyzer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "seo",
+    "analytics",
+    "website-analyzer",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.19.2",
+    "node-fetch": "^2.7.0"
+  }
+}
