@@ -772,101 +772,49 @@ function renderKeywords(keywords) {
 }
 
 function renderCharts(data) {
-    charts.forEach(c => c.destroy());
-    charts = [];
+  charts.forEach(c => c.destroy());
+  charts = [];
 
-    const isDark = document.body.classList.contains('dark-mode');
-    const text = isDark ? '#e2e8f0' : '#1e293b';
-    const grid = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
+  const isDark = document.body.classList.contains('dark-mode');
+  const text = isDark ? '#e2e8f0' : '#1e293b';
+  const grid = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
 
-    // Render traffic and sources charts if data is available
-    if (data.analytics) {
-        const trafficCtx = document.getElementById('trafficChart').getContext('2d');
-        charts.push(new Chart(trafficCtx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                datasets: [
-                    {
-                        label: 'Visitors',
-                        data: [10000, 12000, 15000, 13000, 18000, 22000, 25000, 23000, 28000, 30000, 32000, 35000],
-                        borderColor: '#2563eb',
-                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Sessions',
-                        data: [8000, 9500, 12000, 11000, 15000, 18000, 20000, 19000, 23000, 25000, 27000, 30000],
-                        borderColor: '#0ea5e9',
-                        backgroundColor: 'rgba(14, 165, 233, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { labels: { color: text } } },
-                scales: {
-                    x: { ticks: { color: text }, grid: { color: grid } },
-                    y: { ticks: { color: text }, grid: { color: grid } }
-                }
-            }
-        }));
-
-        const sourcesCtx = document.getElementById('sourcesChart').getContext('2d');
-        charts.push(new Chart(sourcesCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Organic', 'Direct', 'Referral', 'Social', 'Email', 'Paid'],
-                datasets: [{
-                    data: [
-                        data.analytics.trafficSources.organic,
-                        data.analytics.trafficSources.direct,
-                        data.analytics.trafficSources.referral,
-                        data.analytics.trafficSources.social,
-                        data.analytics.trafficSources.email,
-                        data.analytics.trafficSources.paid
-                    ],
-                    backgroundColor: ['#2563eb', '#0ea5e9', '#22c55e', '#f59e0b', '#8b5cf6', '#ef4444']
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { position: 'bottom', labels: { color: text } } }
-            }
-        }));
-    } else {
-        const analyticsSection = document.getElementById('analytics-section');
-        const chartRow = analyticsSection.querySelector('.row.mt-4');
-        if (chartRow) {
-            chartRow.innerHTML = '';
+  // Render performance chart only if we have real SEO data from Gemini
+  if (data.seo && data.seo.overall > 0) {
+    const perfCtx = document.getElementById('performanceChart').getContext('2d');
+    charts.push(new Chart(perfCtx, {
+      type: 'bar',
+      data: {
+        labels: ['SEO', 'Performance', 'Accessibility', 'Best Practices', 'Security'],
+        datasets: [{
+          label: 'Score',
+          data: [data.seo.overall, data.seo.performance, data.seo.accessibility, data.seo.bestPractices, data.seo.security],
+          backgroundColor: ['#2563eb', '#0ea5e9', '#22c55e', '#f59e0b', '#ef4444']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { labels: { color: text } } },
+        scales: {
+          x: { ticks: { color: text }, grid: { color: grid } },
+          y: { min: 0, max: 100, ticks: { color: text }, grid: { color: grid } }
         }
+      }
+    }));
+  } else {
+    // Hide performance chart if no real data
+    const perfChartEl = document.getElementById('performanceChart');
+    if (perfChartEl) {
+      perfChartEl.parentElement.innerHTML = '';
     }
+  }
 
-    if (data.seo) {
-        const perfCtx = document.getElementById('performanceChart').getContext('2d');
-        charts.push(new Chart(perfCtx, {
-            type: 'bar',
-            data: {
-                labels: ['SEO', 'Performance', 'Accessibility', 'Best Practices', 'Security'],
-                datasets: [{
-                    label: 'Score',
-                    data: [data.seo.overall, data.seo.performance, data.seo.accessibility, data.seo.bestPractices, data.seo.security],
-                    backgroundColor: ['#2563eb', '#0ea5e9', '#22c55e', '#f59e0b', '#ef4444']
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { labels: { color: text } } },
-                scales: {
-                    x: { ticks: { color: text }, grid: { color: grid } },
-                    y: { min: 0, max: 100, ticks: { color: text }, grid: { color: grid } }
-                }
-            }
-        }));
-    }
+  // Analytics charts are hidden (no data)
+  const analyticsSection = document.getElementById('analytics-section');
+  const chartRow = analyticsSection.querySelector('.row.mt-4');
+  if (chartRow) {
+    chartRow.innerHTML = '';
+  }
 }
 
 function showToast(message, type = 'info') {

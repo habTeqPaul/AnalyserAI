@@ -184,150 +184,133 @@ function getSampleData(url) {
   return {
     overview: {
       url: url || 'https://example.com',
-      title: 'Example Domain',
-      metaDescription: 'This domain is for use in illustrative examples in documents.',
+      title: 'Analysis Failed',
+      metaDescription: 'Could not retrieve meta description',
       canonicalUrl: url || 'https://example.com',
-      language: 'en',
-      favicon: 'https://example.com/favicon.ico',
-      httpsStatus: 'Active',
-      server: 'nginx',
-      cms: 'WordPress',
-      wordCount: 1542,
-      readingTime: '7 min',
-      pageSize: '2.4 MB',
-      loadTime: '1.2s',
-      statusCode: 200
+      language: 'Unknown',
+      favicon: '',
+      httpsStatus: 'Unknown',
+      server: 'Unknown',
+      cms: 'CMS not detected',
+      wordCount: 0,
+      readingTime: '0 min',
+      pageSize: '0 KB',
+      loadTime: '0s',
+      statusCode: 0
     },
     seo: {
-      overall: 92,
-      technical: 95,
-      onPage: 91,
-      contentQuality: 88,
-      performance: 94,
-      accessibility: 90,
-      bestPractices: 96,
-      security: 98
+      overall: 0,
+      technical: 0,
+      onPage: 0,
+      contentQuality: 0,
+      performance: 0,
+      accessibility: 0,
+      bestPractices: 0,
+      security: 0
     },
     meta: {
-      title: 'Example Domain',
-      description: 'This domain is for use in illustrative examples in documents.',
-      keywords: 'example, domain, test',
+      title: '',
+      description: '',
+      keywords: '',
       author: '',
-      robots: 'index, follow',
-      viewport: 'width=device-width, initial-scale=1.0',
-      canonical: url || 'https://example.com',
+      robots: '',
+      viewport: '',
+      canonical: '',
       openGraph: {
-        title: 'Example Domain',
-        description: 'This domain is for use in illustrative examples in documents.',
-        image: 'https://example.com/og-image.jpg'
+        title: '',
+        description: '',
+        image: ''
       },
       twitterCards: {
-        card: 'summary_large_image',
-        title: 'Example Domain',
-        description: 'This domain is for use in illustrative examples in documents.',
-        image: 'https://example.com/twitter-image.jpg'
+        card: '',
+        title: '',
+        description: '',
+        image: ''
       },
-      charset: 'UTF-8',
-      language: 'en'
+      charset: '',
+      language: ''
     },
     headings: {
-      h1: 1,
-      h2: 5,
-      h3: 8,
+      h1: 0,
+      h2: 0,
+      h3: 0,
       missing: 0,
       duplicates: 0,
-      structure: ['Main Heading', 'Section 1', 'Subsection 1.1', 'Section 2']
+      structure: []
     },
     images: {
-      total: 12,
-      missingAlt: 2,
-      optimized: 10,
-      large: 1,
-      formats: ['JPEG', 'PNG', 'WebP']
+      total: 0,
+      missingAlt: 0,
+      optimized: 0,
+      large: 0,
+      formats: []
     },
     links: {
-      internal: 42,
-      external: 15,
+      internal: 0,
+      external: 0,
       broken: 0,
-      nofollow: 3,
-      dofollow: 54
+      nofollow: 0,
+      dofollow: 0
     },
     analytics: null,
     searchConsole: null,
     performance: {
-      score: 94,
-      lcp: '2.1s',
-      fcp: '0.8s',
-      speedIndex: '1.5s',
-      cls: 0.05,
-      ttfb: '0.4s',
-      inp: '0.2s'
+      score: 0,
+      lcp: '0s',
+      fcp: '0s',
+      speedIndex: '0s',
+      cls: 0,
+      ttfb: '0s',
+      inp: '0s'
     },
     coreWebVitals: {
-      lcp: 'Good',
-      fcp: 'Good',
-      cls: 'Good',
-      inp: 'Good',
-      ttfb: 'Good'
+      lcp: 'Unknown',
+      fcp: 'Unknown',
+      cls: 'Unknown',
+      inp: 'Unknown',
+      ttfb: 'Unknown'
     },
     accessibility: {
-      aria: true,
-      contrast: 'Good',
-      labels: true,
-      keyboardNav: true,
-      screenReader: true,
-      score: 90
+      aria: false,
+      contrast: 'Unknown',
+      labels: false,
+      keyboardNav: false,
+      screenReader: false,
+      score: 0
     },
     security: {
-      https: true,
-      ssl: 'Valid',
-      securityHeaders: true,
-      xssProtection: true,
-      csp: true,
-      hsts: true,
+      https: false,
+      ssl: 'Unknown',
+      securityHeaders: false,
+      xssProtection: false,
+      csp: false,
+      hsts: false,
       mixedContent: false
     },
     mobileFriendly: {
-      responsive: true,
-      viewport: true,
-      tapTargets: 'Good',
-      fontSizes: 'Good',
-      score: 95
+      responsive: false,
+      viewport: false,
+      tapTargets: 'Unknown',
+      fontSizes: 'Unknown',
+      score: 0
     },
     structuredData: {
-      schemaOrg: true,
-      breadcrumb: true,
-      organization: true,
+      schemaOrg: false,
+      breadcrumb: false,
+      organization: false,
       product: false,
-      faq: true,
-      article: true
+      faq: false,
+      article: false
     },
     socialPreview: {
-      facebook: true,
-      twitter: true,
-      ogImage: true
+      facebook: false,
+      twitter: false,
+      ogImage: false
     },
-    technologies: ['React', 'Node.js', 'Express', 'WordPress', 'Cloudflare', 'Google Analytics', 'Google Tag Manager', 'Bootstrap', 'jQuery', 'PHP', 'Nginx', 'Apache'],
-    recommendations: [
-      'Add Meta Description',
-      'Optimize Images',
-      'Compress CSS',
-      'Enable GZIP',
-      'Improve Core Web Vitals',
-      'Reduce CLS',
-      'Add Alt Text',
-      'Improve Heading Structure',
-      'Add Structured Data',
-      'Improve Accessibility'
-    ],
-    keywords: [
-      { keyword: 'Website Analyzer', volume: 12000, difficulty: 45, position: 3, clicks: 450 },
-      { keyword: 'SEO Tool', volume: 8500, difficulty: 52, position: 5, clicks: 320 },
-      { keyword: 'Website Audit', volume: 6200, difficulty: 48, position: 7, clicks: 210 },
-      { keyword: 'Google Analytics', volume: 15000, difficulty: 65, position: 12, clicks: 180 },
-      { keyword: 'Technical SEO', volume: 5400, difficulty: 42, position: 4, clicks: 280 }
-    ],
-    fullContent: '<!doctype html>\n<html>\n<head>\n    <title>Example Domain</title>\n\n    <meta charset="utf-8" />\n    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />\n    <meta name="viewport" content="width=device-width, initial-scale=1" />\n    <style type="text/css">\n    body {\n        background-color: #f0f0f2;\n        margin: 0;\n        padding: 0;\n        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;\n        \n    }\n    div {\n        width: 600px;\n        margin: 5em auto;\n        padding: 2em;\n        background-color: #fdfdff;\n        border-radius: 0.5em;\n        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);\n    }\n    a:link, a:visited {\n        color: #38488f;\n        text-decoration: none;\n    }\n    @media (max-width: 700px) {\n        div {\n            margin: 0 auto;\n            width: auto;\n        }\n    }\n    </style>    \n</head>\n\n<body>\n<div>\n    <h1>Example Domain</h1>\n    <p>This domain is for use in illustrative examples in documents. You may use this\n    domain in literature without prior coordination or asking for permission.</p>\n    <p><a href="https://www.iana.org/domains/example">More information...</a></p>\n</div>\n</body>\n</html>'
+    technologies: [],
+    recommendations: [],
+    keywords: [],
+    fullContent: ''
   };
 }
 
